@@ -10,17 +10,55 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        List<String> mainCourse = null;
+        List<String> mainCourse;
+        ArrayList<MainDish> mainDishes = new ArrayList<MainDish>() {
+        };
 
         //mainCourse = readFile("main_dish.txt");
         MyReader reader = new MyReader();
 
         //String myPath  = new File(".").getAbsolutePath();
-        String myTarget = "src/drinks.txt";
+        String myTarget = "src/main_dish.txt"; // "src/drinks.txt";
 
-         mainCourse =  reader.readNamedFile(myTarget);
-        String str1 = mainCourse.get(1);
-        System.out.println(str1);
+        mainCourse =  reader.readNamedFile(myTarget);
+        System.out.println(mainCourse);
+
+        String mainmeal = "";
+        String accomp= "";
+        String name= "";
+        double price;
+
+        //load into a series of MainDish items
+         for (int i = 0; i < mainCourse.size(); i++) {
+             //each record is four lines followed by \n
+             //1st line is name
+             int modi = i % 5;
+             String lineItem = mainCourse.get(i);
+             if (lineItem.length() > 0){
+                 switch(modi % 5){
+                     case 0: name = lineItem; break; //mainmeal = lineItem; break;
+                     case 1: mainmeal = lineItem;// accomp = lineItem; break;
+                     case 2: accomp = lineItem; break;// mainmeal = lineItem; break;
+                     case 3: String newStr = lineItem.replaceAll("[^\\d.]+", "");
+                         price = Double.parseDouble(newStr);
+                        MainDish myMain = new MainDish((mainmeal), accomp, name, price);
+                         mainDishes.add(myMain);
+                         mainmeal = "";
+                         accomp= "";
+                         name= "";
+                         price= 0.0;
+                         break;
+                     case 4:
+                         break;
+                     default: break;
+                 }
+             }
+
+         }
+
+        for(MainDish f : mainDishes) {
+            System.out.println(f);
+        }
 
     }
 
@@ -74,21 +112,44 @@ public class Main {
 abstract class Food {
     private String name;
     private double price;
-    public Food() {
-        ;
+    public Food () {; }
+
+
+    protected void setName(String name) {
+        this.name = name;
     }
+
+    protected void setPrice(double price) {
+        this.price = price;
+    }
+
+    protected String getName() {
+        return this.name;
+    };
+
+    protected double getPrice() {
+        return this.price;
+    }
+
 
     public abstract String toString();
 }
 
 class MainDish extends Food {
     private String mainmeal, accompaniments;
-    public MainDish() {
-        ;
+    public MainDish() {;}
+    public MainDish(String mainmeal, String accompaniments, String name, double price) {
+        super.setName(name);
+        super.setPrice(price);
+        this.mainmeal = mainmeal;
+        this.accompaniments = accompaniments;
     }
 
     public String toString(){
-        return "";
+        return "\tName:\t" + super.getName() +
+                "\n\t\tMain Meal:\t" + this.mainmeal +
+                "\n\t\tAccompaniments:\t" + this.accompaniments +
+                "\n\t\tPrice:\t" + Double.toString(super.getPrice());
     };
 }
 
@@ -97,8 +158,15 @@ class Drink extends Food {
         ;
     }
 
+    public Drink(String name, double price) {
+        super.setName(name);
+        super.setPrice(price);
+    }
+
     public String toString(){
-        return "";
+        String s = Double.toString(super.getPrice());
+        return "Name:\t" + super.getName() +
+                "\n\tPrice:\t" + Double.toString(super.getPrice());
     };
 }
 
@@ -108,8 +176,17 @@ class Dessert extends Food {
         ;
     }
 
+    public Dessert(String name, double price, String description) {
+        super.setName(name);
+        super.setPrice(price);
+        this.description = description;
+    }
+
     public String toString(){
-        return "";
+        return "Name:\t" + super.getName() +
+                "\nPrice:\t" + Double.toString(super.getPrice()) +
+                "\n\t\tDescription:\t" + this.description +
+                "\n\t\tPrice:\t" + Double.toString(super.getPrice());
     };
 }
 
