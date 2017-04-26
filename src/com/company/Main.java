@@ -5,8 +5,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -46,7 +49,7 @@ public class Main {
                          mainmeal = "";
                          accomp= "";
                          name= "";
-                         price= 0.0;
+                         //price= 0.0;
                          break;
                      case 4:
                          break;
@@ -146,10 +149,16 @@ class MainDish extends Food {
     }
 
     public String toString(){
+
+        double money = super.getPrice();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String moneyString = formatter.format(money);
+        //System.out.println(moneyString);
+
         return "\tName:\t" + super.getName() +
                 "\n\t\tMain Meal:\t" + this.mainmeal +
                 "\n\t\tAccompaniments:\t" + this.accompaniments +
-                "\n\t\tPrice:\t" + Double.toString(super.getPrice());
+                "\n\t\tPrice:\t" + moneyString; //Double.toString(super.getPrice());
     };
 }
 
