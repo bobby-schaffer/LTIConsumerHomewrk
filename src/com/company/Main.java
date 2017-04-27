@@ -2,27 +2,36 @@
 package com.company;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.List;
-import java.util.Locale;
+
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        List<String> mainCourse;
-        ArrayList<MainDish> mainDishes = new ArrayList<MainDish>() {
-        };
 
-        //mainCourse = readFile("main_dish.txt");
+
+        RestaurantMenu rmenu = new RestaurantMenu();
+        rmenu.run();
+        rmenu = null;
+
+//        FileToList ftl = FileToList.getInstance();
+//        ftl.readTheFile();
+       // ftl.readFile("src/main_dish.txt");  //readFile
+
+        List<String> mainCourse;
+        ArrayList<MainDish> mainDishes = new ArrayList<MainDish>();
+//        {
+//        };
+
+        //desserts = readFile("main_dish.txt");
         MyReader reader = new MyReader();
 
         //String myPath  = new File(".").getAbsolutePath();
         String myTarget = "src/main_dish.txt"; // "src/drinks.txt";
 
+/*
         mainCourse =  reader.readNamedFile(myTarget);
         System.out.println(mainCourse);
 
@@ -62,54 +71,35 @@ public class Main {
         for(MainDish f : mainDishes) {
             System.out.println(f);
         }
+*/
+
 
     }
 
 }
 
-/*        try {
-                //Choose the file that you will use.
-                String filenameTXT = "Root/src/recipes.txt";
-                String filenameJSON = "Root/src/recipes.json";
 
-                //Read your input and create the Objects Recipe
+class DessertHandler{
+ public DessertHandler() {;}
 
+ //read file and convert to an ArrayList of Dessert objects
 
-                } catch (IOException e) {
-                e.printStackTrace();
-                } finally {
-                try {
-                if (input != null){
-                input.close();
-                }
-                } catch (IOException ex) {
+    List<String> dessertStrings;
+    ArrayList<Dessert> desserts = new ArrayList<Dessert>() {
+    };
 
-                ex.printStackTrace();
+    //desserts = readFile("main_dish.txt");
+    MyReader readerX = new MyReader();
+    //reader.readNamedFile(my)
 
-                }
-                }
-*/
-/*
+    //String myPath  = new File(".").getAbsolutePath();
+    String myTarget = "src/dessert.txt"; // "src/drinks.txt";
 
-      try {
-            FileOutputStream output = new FileOutputStream("Root/src/favorite_recipe.txt");
+//    dessertStrings =  readerX.readNamedFile(myTarget);
+//        System.out.println(desserts);
 
-            //Write to the file the favorite recipe Crock Pot Roast information to test
-            //Use methods of the Object Recipe to generate the amount of ingredients
-            //and the amount of steps.
+}
 
-            //Write the favorite recipe to the file
-
-
-            //Expected action: Save the favorite recipe
-            //Use tab instead of space to give format after each new line.
-
-
-        } catch (IOException e) {
-                e.printStackTrace();
-                }
-                }
-                */
 
 
 abstract class Food {
@@ -173,9 +163,14 @@ class Drink extends Food {
     }
 
     public String toString(){
-        String s = Double.toString(super.getPrice());
+
+        double money = super.getPrice();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String moneyString = formatter.format(money);
+
+        //String s = Double.toString(super.getPrice());
         return "Name:\t" + super.getName() +
-                "\n\tPrice:\t" + Double.toString(super.getPrice());
+                "\n\tPrice:\t" + moneyString;
     };
 }
 
@@ -192,10 +187,15 @@ class Dessert extends Food {
     }
 
     public String toString(){
+
+        double money = super.getPrice();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String moneyString = formatter.format(money);
+
         return "Name:\t" + super.getName() +
                 "\nPrice:\t" + Double.toString(super.getPrice()) +
                 "\n\t\tDescription:\t" + this.description +
-                "\n\t\tPrice:\t" + Double.toString(super.getPrice());
+                "\n\t\tPrice:\t" + moneyString; //Double.toString(super.getPrice());
     };
 }
 
@@ -251,3 +251,4 @@ class Combo {
         return "";
     };
 }
+
