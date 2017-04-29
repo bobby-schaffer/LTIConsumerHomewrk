@@ -8,15 +8,12 @@ import java.util.List;
 /**
  * Created by bobby on 4/29/17.
  */
-public interface FoodFileReader {
+public class FoodTextFileReader implements FoodFileReader {
 
-    //public FoodFileReader() {};
+    public FoodTextFileReader() {};
 
-    List<String> readFile(String filename);
-
-/*
-    public List<String> readFile(String filename)
-    {
+    @Override
+    public List<String> readFile(String filename) {
         List<String> records = new ArrayList<String>();
         try
         {
@@ -35,7 +32,7 @@ public interface FoodFileReader {
             e.printStackTrace();
             return null;
         }
+
     }
-*/
 
 }

@@ -17,13 +17,22 @@ public class RestaurantMenu {
         //do everything from here
         System.out.println("RestaurantMenu.run...");
 
-
         //SET UP MAIN DISH LIST
         List<String> mainCourse;
-        ArrayList<MainDish> mainDishes = new ArrayList<MainDish>();
+        ArrayList<MainDish> mainDishes = new ArrayList<>();
 
-        FoodFileReader ffr = new FoodFileReader();
-        mainCourse = ffr.readFile("src/main_dish.txt");
+        //FoodFileReader ffr = new FoodFileReader();
+
+        FoodTextFileReader ffr = new FoodTextFileReader();
+        MainDishFoodListParser mdflp = new MainDishFoodListParser();
+
+        //mainCourse = ffr.readFile("src/main_dish.txt");
+
+        MainDishHandler mdh = new MainDishHandler(ffr, mdflp);
+        mainDishes = mdh.getMainDishList();
+
+
+/*
 
         //FileToList ftl = FileToList.getInstance();
 
@@ -61,6 +70,7 @@ public class RestaurantMenu {
             }
 
         }
+*/
 
         for(MainDish f : mainDishes) {
             System.out.println(f);
