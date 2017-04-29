@@ -78,8 +78,8 @@ public class Main {
 }
 
 
-class DessertHandler{
- public DessertHandler() {;}
+class DessertHandlerX{
+ public DessertHandlerX() {;}
 
  //read file and convert to an ArrayList of Dessert objects
 

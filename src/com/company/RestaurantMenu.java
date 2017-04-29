@@ -18,8 +18,10 @@ public class RestaurantMenu {
         System.out.println("RestaurantMenu.run...");
 
         //SET UP MAIN DISH LIST
-        List<String> mainCourse;
+        //List<String> mainCourse;
         ArrayList<MainDish> mainDishes = new ArrayList<>();
+        ArrayList<Dessert> desserts = new ArrayList<>();
+        ArrayList<Drink> drinks = new ArrayList<>();
 
         //FoodFileReader ffr = new FoodFileReader();
 
@@ -28,8 +30,17 @@ public class RestaurantMenu {
 
         //mainCourse = ffr.readFile("src/main_dish.txt");
 
-        MainDishHandler mdh = new MainDishHandler(ffr, mdflp);
+        MainDishHandler mdh = new MainDishHandler(ffr, mdflp, "src/main_dish.txt");
         mainDishes = mdh.getMainDishList();
+
+        DessertFoodListParser dflp = new DessertFoodListParser();
+        DessertHandler dh = new DessertHandler(ffr, dflp, "src/dessert.txt");
+        desserts = dh.getDessertlist();
+
+        DrinkFoodListParser drflp = new DrinkFoodListParser();
+        DrinkHandler drh = new DrinkHandler(ffr, drflp, "src/drinks.txt");
+        drinks = drh.getDrinkList();
+
 
 
 /*
@@ -80,7 +91,7 @@ public class RestaurantMenu {
 
         //SET UP DESSERTS
         List<String> dessertStrings;
-        ArrayList<Dessert> desserts = new ArrayList<>();
+       // ArrayList<Dessert> desserts = new ArrayList<>();
 
         //FileToList ftl = FileToList.getInstance();
 
@@ -127,7 +138,7 @@ public class RestaurantMenu {
 
         //SET UP DRINKS
         List<String> drinkStrings;
-        ArrayList<Drink> drinks = new ArrayList<>();
+
 
         //FileToList ftl = FileToList.getInstance();
 

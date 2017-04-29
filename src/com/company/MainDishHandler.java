@@ -17,7 +17,7 @@ public class MainDishHandler {
 
     ArrayList<MainDish> mainDishes = new ArrayList<>();
 
-    public MainDishHandler(FoodFileReader ffr, MainDishFoodListParser listParser) {
+    public MainDishHandler(FoodFileReader ffr, MainDishFoodListParser listParser, String fileName) {
 
         //SET UP MAIN DISH LIST
         List<String> mainCourse;
@@ -30,7 +30,12 @@ public class MainDishHandler {
 
         //FoodTextFileReader ffr = new FoodTextFileReader();
 
-        mainCourse = ffr.readFile("src/main_dish.txt");
+        //mainCourse = ffr.readFile("src/main_dish.txt");
+
+        //read file and convert to list of strings
+        mainCourse = ffr.readFile(fileName);
+
+        //parse the list to return a list of MainDish items
         //public List<MainDish> parser(List<String> mainCourse) {
         mainDishes = listParser.parser(mainCourse);
 
