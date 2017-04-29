@@ -17,13 +17,17 @@ public class RestaurantMenu {
         //do everything from here
         System.out.println("RestaurantMenu.run...");
 
+
         //SET UP MAIN DISH LIST
         List<String> mainCourse;
         ArrayList<MainDish> mainDishes = new ArrayList<MainDish>();
 
+        FoodFileReader ffr = new FoodFileReader();
+        mainCourse = ffr.readFile("src/main_dish.txt");
+
         //FileToList ftl = FileToList.getInstance();
 
-        mainCourse = FileToList.getInstance().readFile("src/main_dish.txt");
+        //mainCourse = FileToList.getInstance().readFile("src/main_dish.txt");
 
         String mainmeal = "";
         String accomp= "";
@@ -70,7 +74,8 @@ public class RestaurantMenu {
 
         //FileToList ftl = FileToList.getInstance();
 
-        dessertStrings = FileToList.getInstance().readFile("src/dessert.txt");
+        //dessertStrings = FileToList.getInstance().readFile("src/dessert.txt");
+        dessertStrings = ffr.readFile("src/dessert.txt");
         //String name, double price, String description
         String dessertDescription = "";
         String dessertName= "";
@@ -116,7 +121,8 @@ public class RestaurantMenu {
 
         //FileToList ftl = FileToList.getInstance();
 
-        drinkStrings = FileToList.getInstance().readFile("src/drinks.txt");
+        //drinkStrings = FileToList.getInstance().readFile("src/drinks.txt");
+        drinkStrings = ffr.readFile("src/drinks.txt");
         //String name, double price, String description
         String drinkDescription = "";
         String drinkName= "";

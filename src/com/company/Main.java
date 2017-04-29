@@ -20,16 +20,15 @@ public class Main {
 //        ftl.readTheFile();
        // ftl.readFile("src/main_dish.txt");  //readFile
 
-        List<String> mainCourse;
-        ArrayList<MainDish> mainDishes = new ArrayList<MainDish>();
-//        {
-//        };
+        //List<String> mainCourse;
+        //ArrayList<MainDish> mainDishes = new ArrayList<MainDish>();
+
 
         //desserts = readFile("main_dish.txt");
-        MyReader reader = new MyReader();
+        //MyReader reader = new MyReader();
 
         //String myPath  = new File(".").getAbsolutePath();
-        String myTarget = "src/main_dish.txt"; // "src/drinks.txt";
+        //String myTarget = "src/main_dish.txt"; // "src/drinks.txt";
 
 /*
         mainCourse =  reader.readNamedFile(myTarget);
