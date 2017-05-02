@@ -41,7 +41,17 @@ public class RestaurantMenu {
         DrinkHandler drh = new DrinkHandler(ffr, drflp, "src/drinks.txt");
         drinks = drh.getDrinkList();
 
+        for(MainDish f : mainDishes) {
+            System.out.println(f);
+        }
 
+        for(Dessert d : desserts) {
+            System.out.println(d);
+        }
+
+        for(Drink f : drinks) {
+            System.out.println(f);
+        }
 
 /*
 
@@ -83,11 +93,12 @@ public class RestaurantMenu {
         }
 */
 
-        for(MainDish f : mainDishes) {
-            System.out.println(f);
-        }
+//        for(MainDish f : mainDishes) {
+//            System.out.println(f);
+//        }
 
         //END SET UP MAIN DISH LIST
+/*
 
         //SET UP DESSERTS
         List<String> dessertStrings;
@@ -133,11 +144,12 @@ public class RestaurantMenu {
         for(Dessert f : desserts) {
             System.out.println(f);
         }
+*/
 
         //END SET UP DESSERTS
 
         //SET UP DRINKS
-        List<String> drinkStrings;
+ /*       List<String> drinkStrings;
 
 
         //FileToList ftl = FileToList.getInstance();
@@ -176,7 +188,7 @@ public class RestaurantMenu {
 
         for(Drink f : drinks) {
             System.out.println(f);
-        }
+        }*/
     //END SETUP DRINKS
 
     }
