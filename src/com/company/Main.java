@@ -192,7 +192,6 @@ class Dessert extends Food {
         String moneyString = formatter.format(money);
 
         return "Name:\t" + super.getName() +
-                "\nPrice:\t" + Double.toString(super.getPrice()) +
                 "\n\t\tDescription:\t" + this.description +
                 "\n\t\tPrice:\t" + moneyString; //Double.toString(super.getPrice());
     };
