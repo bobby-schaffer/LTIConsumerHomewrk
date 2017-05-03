@@ -1,10 +1,16 @@
 
 package com.company;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -15,64 +21,30 @@ public class Main {
         RestaurantMenu rmenu = new RestaurantMenu();
         rmenu.run();
         rmenu = null;
+//////////////
+        JSONParser parser = new JSONParser();
 
-//        FileToList ftl = FileToList.getInstance();
-//        ftl.readTheFile();
-       // ftl.readFile("src/main_dish.txt");  //readFile
+        try {
 
-        //List<String> mainCourse;
-        //ArrayList<MainDish> mainDishes = new ArrayList<MainDish>();
+            Object obj = parser.parse(new FileReader("src/file1.txt"));
 
+            JSONObject jsonObject = (JSONObject) obj;
 
-        //desserts = readFile("main_dish.txt");
-        //MyReader reader = new MyReader();
+            String name = (String) jsonObject.get("Name");
+            String author = (String) jsonObject.get("Author");
+            JSONArray companyList = (JSONArray) jsonObject.get("Company List");
 
-        //String myPath  = new File(".").getAbsolutePath();
-        //String myTarget = "src/main_dish.txt"; // "src/drinks.txt";
+            System.out.println("Name: " + name);
+            System.out.println("Author: " + author);
+            System.out.println("\nCompany List:");
+            Iterator<String> iterator = companyList.iterator();
+            while (iterator.hasNext()) {
+                System.out.println(iterator.next());
+           }
 
-/*
-        mainCourse =  reader.readNamedFile(myTarget);
-        System.out.println(mainCourse);
-
-        String mainmeal = "";
-        String accomp= "";
-        String name= "";
-        double price;
-
-        //load into a series of MainDish items
-         for (int i = 0; i < mainCourse.size(); i++) {
-             //each record is four lines followed by \n
-             //1st line is name
-             int modi = i % 5;
-             String lineItem = mainCourse.get(i);
-             if (lineItem.length() > 0){
-                 switch(modi % 5){
-                     case 0: name = lineItem; break; //mainmeal = lineItem; break;
-                     case 1: mainmeal = lineItem;// accomp = lineItem; break;
-                     case 2: accomp = lineItem; break;// mainmeal = lineItem; break;
-                     case 3: String newStr = lineItem.replaceAll("[^\\d.]+", "");
-                         price = Double.parseDouble(newStr);
-                        MainDish myMain = new MainDish((mainmeal), accomp, name, price);
-                         mainDishes.add(myMain);
-                         mainmeal = "";
-                         accomp= "";
-                         name= "";
-                         //price= 0.0;
-                         break;
-                     case 4:
-                         break;
-                     default: break;
-                 }
-             }
-
-         }
-
-        for(MainDish f : mainDishes) {
-            System.out.println(f);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-*/
-
-
     }
 
 }
