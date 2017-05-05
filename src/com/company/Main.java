@@ -26,6 +26,17 @@ public class Main {
 
         try {
 
+            JSONArray a = (JSONArray) parser.parse(new FileReader("src/drinks.json"));
+            for (Object o : a)
+            {
+                JSONObject drink = (JSONObject) o;
+
+                String name = (String) drink.get("Name");
+                String price = (String) drink.get("Price");
+
+                System.out.println("Name: " + name + " Price: " + price);
+            }
+
             Object obj = parser.parse(new FileReader("src/file1.txt"));
 
             JSONObject jsonObject = (JSONObject) obj;

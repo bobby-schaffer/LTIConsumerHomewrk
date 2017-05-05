@@ -33,8 +33,10 @@ public class RestaurantMenu {
         DessertHandler dh = new DessertHandler(ffr, dflp, "src/dessert.txt");
         desserts = dh.getDessertlist();
 
-        DrinkFoodListParser drflp = new DrinkFoodListParser();
-        DrinkHandler drh = new DrinkHandler(ffr, drflp, "src/drinks.txt");
+        //DrinkFoodListParser drflp = new DrinkFoodListParser();
+        //DrinkHandler drh = new DrinkHandler(ffr, drflp, "src/drinks.txt");
+
+        DrinkHandler drh = new DrinkHandler("src/drinks.json");
         drinks = drh.getDrinkList();
 
         for(MainDish f : mainDishes) {
