@@ -16,7 +16,6 @@ public class DrinkFoodListParser {
 
         //load into a series of MainDish items
         for (int i = 0; i < drinkStrings.size(); i++) {
-//            System.out.println(i);
             //each record is three lines followed by \n
 //            Lemonade
 //                    $3
@@ -38,11 +37,6 @@ public class DrinkFoodListParser {
             }
 
         }
-
-//        for(Drink f : drinks) {
-//            System.out.println(f);
-//        }
-
 
         return drinks;
     }

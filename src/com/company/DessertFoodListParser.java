@@ -18,7 +18,6 @@ public class DessertFoodListParser {
 
 
         for (int i = 0; i < dessertStrings.size(); i++) {
-//            System.out.println(i);
             //each record is three lines followed by \n
 //            Jelly
 //                    Strawberry
@@ -43,8 +42,6 @@ public class DessertFoodListParser {
             }
 
         }
-
-
 
         return desserts;
     }

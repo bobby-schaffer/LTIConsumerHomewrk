@@ -16,7 +16,7 @@ public class FileToList {
     }
 
     private FileToList() {
-        System.out.println("FileToList ctor");
+        System.out.println("FileToListx ctor");
     }
 
     public void readTheFile(){
@@ -24,16 +24,7 @@ public class FileToList {
 
 
     }
-
-
-
-
- //   public static List<String> ReadThisFile(String filename) {
- //       List<String> myList = new ArrayList<String>();
- //       return myList;
- //   }
-
-
+    
 
     public List<String> readFile(String filename)
     {

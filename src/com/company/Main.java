@@ -1,16 +1,10 @@
 
 package com.company;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -21,67 +15,9 @@ public class Main {
         RestaurantMenu rmenu = new RestaurantMenu();
         rmenu.run();
         rmenu = null;
-//////////////
-        JSONParser parser = new JSONParser();
-
-        try {
-
-            JSONArray a = (JSONArray) parser.parse(new FileReader("src/drinks.json"));
-            for (Object o : a)
-            {
-                JSONObject drink = (JSONObject) o;
-
-                String name = (String) drink.get("Name");
-                String price = (String) drink.get("Price");
-
-                System.out.println("Name: " + name + " Price: " + price);
-            }
-
-            Object obj = parser.parse(new FileReader("src/file1.txt"));
-
-            JSONObject jsonObject = (JSONObject) obj;
-
-            String name = (String) jsonObject.get("Name");
-            String author = (String) jsonObject.get("Author");
-            JSONArray companyList = (JSONArray) jsonObject.get("Company List");
-
-            System.out.println("Name: " + name);
-            System.out.println("Author: " + author);
-            System.out.println("\nCompany List:");
-            Iterator<String> iterator = companyList.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-           }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 }
-
-
-class DessertHandlerX{
- public DessertHandlerX() {;}
-
- //read file and convert to an ArrayList of Dessert objects
-
-    List<String> dessertStrings;
-    ArrayList<Dessert> desserts = new ArrayList<Dessert>() {
-    };
-
-    //desserts = readFile("main_dish.txt");
-    MyReader readerX = new MyReader();
-    //reader.readNamedFile(my)
-
-    //String myPath  = new File(".").getAbsolutePath();
-    String myTarget = "src/dessert.txt"; // "src/drinks.txt";
-
-//    dessertStrings =  readerX.readNamedFile(myTarget);
-//        System.out.println(desserts);
-
-}
-
 
 
 abstract class Food {
@@ -130,7 +66,7 @@ class MainDish extends Food {
         return "\tName:\t" + super.getName() +
                 "\n\t\tMain Meal:\t" + this.mainmeal +
                 "\n\t\tAccompaniments:\t" + this.accompaniments +
-                "\n\t\tPrice:\t" + moneyString; //Double.toString(super.getPrice());
+                "\n\t\tPrice:\t" + moneyString;
     };
 }
 
@@ -150,7 +86,6 @@ class Drink extends Food {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String moneyString = formatter.format(money);
 
-        //String s = Double.toString(super.getPrice());
         return "Name:\t" + super.getName() +
                 "\n\tPrice:\t" + moneyString;
     };
@@ -176,7 +111,7 @@ class Dessert extends Food {
 
         return "Name:\t" + super.getName() +
                 "\n\t\tDescription:\t" + this.description +
-                "\n\t\tPrice:\t" + moneyString; //Double.toString(super.getPrice());
+                "\n\t\tPrice:\t" + moneyString;
     };
 }
 

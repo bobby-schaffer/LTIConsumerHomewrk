@@ -15,6 +15,7 @@ public class DessertHandler {
 
     ArrayList<Dessert> desserts = new ArrayList<>();
 
+    //reads and parses text file
     public DessertHandler(FoodFileReader ffr, DessertFoodListParser listParser, String fileName ) {
         List <String> dessertStrings;
 
